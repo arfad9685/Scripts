@@ -1,0 +1,8 @@
+begin
+FOR EXECUTE STATEMENT 'select  nik, nlengkap, kodecabang, namastore, idlama, appcuti
+from vstafbiodata s left outer join cabang c on s.kodecabang=c.kode
+where s.aktif=''Y'''
+on external data source '172.16.11.12:/daten/sispayroll.fdb' AS USER 'APPADMIN' PASSWORD 'masterapp'
+INTO :nik, :nlengkap, :kodecabang, :namacabang, :idlama, :appcuti
+DO SUSPEND;
+end
